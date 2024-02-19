@@ -62,10 +62,9 @@ class BasePage(object):
                 else:
                     return True
             except:
-                print("等待一秒")
+                # print(f"找不到{path}")
                 time.sleep(1)
         return False
-
 
 
 if __name__ == '__main__':

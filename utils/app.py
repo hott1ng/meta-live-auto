@@ -1,8 +1,9 @@
 from selenium import webdriver
 
 
-def base_start_app():
-    pass
+def base_start_app(path):
+    driver = webdriver.Chrome(path)
+    return driver
 
 
 def base_connect_app():

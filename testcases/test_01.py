@@ -26,5 +26,5 @@ class Test01:
         assert title is not None
 
 
-    def teardown_method(self):
-        self.page.base_logout()
+    # def teardown_method(self):
+    #     self.page.base_logout()

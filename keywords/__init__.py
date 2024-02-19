@@ -7,5 +7,5 @@ sys.path.insert(0,BASE_DIR+"/utils")  #也可以用os.path.join(BASE_DIR,'/keywo
 sys.path.insert(0,BASE_DIR+"/keywords")  #也可以用os.path.join(BASE_DIR,'/keywords')
 
 
-print("BASE_DIR",BASE_DIR)
-print("sys_path",sys.path)
+# print("BASE_DIR",BASE_DIR)
+# print("sys_path",sys.path)
