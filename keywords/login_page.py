@@ -32,11 +32,11 @@ class LoginPage(BasePage):
         pass
 
     def login_pwd(self):
-        self.click(self.pwd_tab_button, (0, 2))
-        self.input( self.phone_number_input, self.phone_number)
-        self.input( self.pwd_input, self.password)
-        self.click(self.agreement_button, (0, 2))
-        self.click(self.login_button, (0, 10))
+        self.base_click(self.pwd_tab_button, (0, 2))
+        self.base_input( self.phone_number_input, self.phone_number)
+        self.base_input( self.pwd_input, self.password)
+        self.base_click(self.agreement_button, (0, 2))
+        self.base_click(self.login_button, (0, 10))
 
     def login_sms(self):
         pass
