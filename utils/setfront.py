@@ -3,9 +3,9 @@ from pywinauto import application
 import time
 
 
-def setFront():
+def setFront(title='元分身 • 数字人直播'):
     # 获取应用程序的窗口句柄
-    hwnd = win32gui.FindWindow(None, '元分身 • 数字人直播')
+    hwnd = win32gui.FindWindow(None, title)
     # 通过句柄连接应用程序
     app = application.Application().connect(handle=hwnd)  # 替换为你的应用程序句柄
     # 获取主窗口并将其置顶

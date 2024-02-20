@@ -15,7 +15,7 @@ from selenium import webdriver
 import pytest
 
 
-class Test01:
+class Test02:
     def setup_method(self):
         # self.driver = app.base_connect_app()
         self.driver = app.base_start_app()
@@ -23,38 +23,38 @@ class Test01:
         # self.page = LoginPage(driver)
 
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_login(self):
-        self.page = LoginPage(self.driver)
-        self.page.login_pwd()
+        page = LoginPage(self.driver)
+        page.login_pwd()
         driver = app.base_connect_app()
-        self.page = HomePage(driver)
-        title = self.page.base_find_element('//*[contains(text(),"欢迎")]')
+        page = HomePage(driver)
+        title = page.base_find_element('//*[contains(text(),"欢迎")]')
         assert title is not None
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_main(self):
         # switch_to(self.driver, '//*[text()="模板中心"]')
-        self.page = HomePage(self.driver)
-        self.page.goto_edit_page()
+        page = HomePage(self.driver)
+        page.goto_edit_page()
         time.sleep(10)
 
-        self.page = EditPage(self.driver)
+        page = EditPage(self.driver)
         # 返回直播间名称
-        project_name = self.page.main()
+        project_name = page.main()
         # project_name = '新直播2024021923'
-        self.page = ProjectPage(self.driver)
-        self.page.wait_publish(project_name)
-        self.page.goto_live(name=project_name)
+        page = ProjectPage(self.driver)
+        page.wait_publish(project_name)
+        page.goto_live(name=project_name)
         time.sleep(5)
         switch_to(self.driver, '//*[text()="关注互动"]')
         # self.driver.switch_to.window(window)
 
-        self.page = LivingPage(self.driver)
-        self.page.main()
+        page = LivingPage(self.driver)
+        page.main()
 
-    def test_quit(self):
-        print(111)
+    # def testquit(self):
+    #     print(111)
 
     def teardown_class(self):
         # while True:
@@ -62,8 +62,23 @@ class Test01:
         # setFront()
 
         # switch_to(self.driver, '//*[text()="模板中心"]')
-        self.page = HomePage(self.driver)
-        self.page.base_logout()
+
+        # teardown不会触发setup
+        driver = app.base_start_app()
+        setFront()
+        try:
+            page = HomePage(driver)
+            page.base_logout()
+
+        except:
+
+            if not check_quit(driver):
+                driver = app.base_start_app()
+                setFront()
+
+                page = HomePage(driver)
+                page.base_logout()
+
 
             # if check_quit(self.driver):
             #     break

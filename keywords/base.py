@@ -22,7 +22,6 @@ class BasePage(object):
         if self.base_wait(path):
             return self.driver.find_element(By.XPATH, path)
 
-
     # 单击
     def base_click(self, path, args=(0, 0)):
         front_wait = args[0]
@@ -65,6 +64,7 @@ class BasePage(object):
                 # print(f"找不到{path}")
                 time.sleep(1)
         return False
+
 
 
 if __name__ == '__main__':

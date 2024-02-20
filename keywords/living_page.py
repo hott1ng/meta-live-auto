@@ -14,6 +14,8 @@ class LivingPage(BasePage):
 
     # 智能互动按钮
     ai_button = '//div[text()="智能互动"]/following-sibling::div/span'
+
+    ai_tab = '//div[text()="智能互动"]'
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -23,12 +25,13 @@ class LivingPage(BasePage):
         self.base_input(self.platform_url, url)
         self.base_click(self.start_spider_button, (1, 1))
         self.base_click(self.ai_button, (1, 1))
+        self.base_click(self.ai_tab, (1, 1))
         logger.info('开启爬虫成功')
 
     def mon_answer(self):
         for i in range(3):
             try:
-                if self.base_find_element('//div[@class="reply-state"]'):
+                if self.base_find_element('//*[text()="回复中 "]'):
                     logger.info('爬虫正常使用')
                     return
                 else:
