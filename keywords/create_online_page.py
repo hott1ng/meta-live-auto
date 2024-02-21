@@ -1,7 +1,7 @@
 import random
 
 from base import *
-from utils.upload_file import base_upload
+from utils import app,system
 import time
 import os
 from dotenv import load_dotenv
@@ -52,11 +52,11 @@ class CreateOnlinePage(BasePage):
 
         uploadbutton[0].click()
         time.sleep(3)
-        base_upload(path1)
+        system.base_upload(path1)
 
         uploadbutton[1].click()
         time.sleep(3)
-        base_upload(path2)
+        system.base_upload(path2)
 
         self.base_click(self.avatar_button, (15, 1))
         self.base_click(self.create_avatar_button, (1, 10))
@@ -65,15 +65,15 @@ class CreateOnlinePage(BasePage):
 
     def step3(self, path, photo1, photo2, version=1):
         self.base_click(self.upload_info, (1, 1))
-        base_upload(path)
+        system.base_upload(path)
 
         if version==1:
             self.base_click(self.photo1_button, (1, 1))
-            base_upload(photo1)
+            system.base_upload(photo1)
 
             self.base_click(self.photo2_button, (1, 1))
 
-            base_upload(photo2)
+            system.base_upload(photo2)
 
 
 
@@ -83,7 +83,7 @@ class CreateOnlinePage(BasePage):
             self.base_click('//span[text()="护照"]',(1,1))
 
             self.base_click('//*[text()="含照片面"]', (1, 1))
-            base_upload(photo1)
+            system.base_upload(photo1)
 
 
         input_list = self.driver.find_elements(By.XPATH, '//*[@placeholder="请输入"]')

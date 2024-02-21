@@ -1,4 +1,5 @@
 from base import *
+from utils import app
 
 
 class HomePage(BasePage):
@@ -14,8 +15,12 @@ class HomePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    # 退出登录
     def logout(self):
-        pass
+        app.setFront()
+        self.base_click(self.user_info_button)
+        time.sleep(1)
+        self.base_click(self.dropdown_button)
 
     def goto_edit_page(self):
         btn = self.driver.find_elements(By.XPATH, self.edit_page_button)[0]
@@ -26,3 +31,6 @@ class HomePage(BasePage):
 
     def goto_human_center(self):
         self.base_click(self.human_center_button)
+
+
+

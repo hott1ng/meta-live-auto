@@ -1,3 +1,4 @@
+import os
 import time
 
 from selenium import webdriver
@@ -6,10 +7,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 from loguru import logger
 import dotenv
 import time
-from utils.setfront import setFront
+from utils import app
 
 
 class BasePage(object):
+    '''
+    每个页面都能使用的方法
+    '''
+
+
     user_info_button = '//div[@class="right-part"]//div[@class="user-avatar"]/following-sibling::div[@class="user-name"]'
     dropdown_button = '//div[@class="dropdown-btn-item"]'
 
@@ -21,6 +27,8 @@ class BasePage(object):
     def base_find_element(self, path):
         if self.base_wait(path):
             return self.driver.find_element(By.XPATH, path)
+        else:
+            return None
 
     # 单击
     def base_click(self, path, args=(0, 0)):
@@ -41,13 +49,6 @@ class BasePage(object):
     def base_clear(self, path):
         self.base_find_element(path).clear()
 
-    # 退出登录
-    def base_logout(self):
-        setFront()
-        self.base_click(self.user_info_button)
-        time.sleep(1)
-        self.base_click(self.dropdown_button)
-
     # 双击
     def base_double_click(self, path):
         ele = self.base_find_element(path)
@@ -64,6 +65,22 @@ class BasePage(object):
                 # print(f"找不到{path}")
                 time.sleep(1)
         return False
+
+
+
+
+
+
+    # def deeply_quit(self):
+    #
+    #     window_num = app.check_quit(self.driver)
+    #
+    #     if window_num == 3:
+    #         app.switch_to(self.driver, '//*[text()="结束直播"]')
+    #         self.base_click('//*[text()="结束直播"]', (1, 1))
+    #         self.base_click('//*[text()="是"]', (1, 1))
+    #     self.base_logout()
+
 
 
 

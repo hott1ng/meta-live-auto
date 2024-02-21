@@ -2,7 +2,6 @@ from base import *
 import time
 
 
-
 class LivingPage(BasePage):
     spider_platform = '//div[@class="panel-header"]//span[text()="直播平台"]'
 
@@ -16,6 +15,7 @@ class LivingPage(BasePage):
     ai_button = '//div[text()="智能互动"]/following-sibling::div/span'
 
     ai_tab = '//div[text()="智能互动"]'
+
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -29,16 +29,15 @@ class LivingPage(BasePage):
         logger.info('开启爬虫成功')
 
     def mon_answer(self):
-        for i in range(3):
+        for i in range(60):
             try:
-                if self.base_find_element('//*[text()="回复中 "]'):
-                    logger.info('爬虫正常使用')
-                    return
-                else:
+                if self.driver.find_element(By.XPATH, '//div[@class="reply-tooltip" and @style="display: none;"]'):
                     time.sleep(1)
             except:
-                logger.info('爬虫异常，正在重新开启')
+                logger.info('爬虫正常使用')
+                return
         logger.info('爬虫异常，一分钟内未触发过')
+
     def shutdown_living(self):
         self.base_click('//*[text()="结束直播"]', (1, 1))
         self.base_click('//*[text()="是"]', (1, 1))
@@ -47,8 +46,6 @@ class LivingPage(BasePage):
         self.start_spider('抖音', 'https://live.douyin.com/33430193638')
         self.mon_answer()
         self.shutdown_living()
-
-
 
 
 if __name__ == '__main__':
