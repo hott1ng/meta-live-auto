@@ -40,5 +40,9 @@ def screenshot(name='屏幕截图'):
 
     return f'log/screenshot/{date}/{name + stamptime}.png'
 
+
+def get_front_30video():
+    pyg.hotkey('win','alt','g')
+
 if __name__ == '__main__':
-    close_update_window()
+    get_front_30video()
