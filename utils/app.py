@@ -9,6 +9,7 @@ import threading
 from keywords.living_page import LivingPage
 from keywords.home_page import HomePage
 from utils import system
+from pywinauto import Desktop
 
 load_dotenv()
 
@@ -56,7 +57,7 @@ def setFront(title='元分身 • 数字人直播'):
 
 
 def check_quit(driver):
-    '''
+    """
     失败后大退
     没有找到退出按钮进入该方法
 
@@ -65,7 +66,11 @@ def check_quit(driver):
     2.弹出更新
     3.先关闭开播控制台，再走正常登录流程
 
-    '''
+    """
+    # 被error卡住
+    app = Desktop(backend='win32')
+    if app.window(title='Error').exists():
+        system.close_error_window()
     # 在home被卡住
     if len(driver.window_handles) == 1:
         driver.close()

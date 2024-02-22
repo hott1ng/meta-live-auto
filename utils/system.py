@@ -23,6 +23,12 @@ def close_update_window():
     dlg.child_window(title="运行 yuan-live-test(&R)", class_name="Button").click_input()
     dlg.child_window(title="完成(&F)", class_name="Button").click_input()
 
+def close_error_window():
+    app = Desktop(backend='win32')
+    dlg = app['Error']
+    dlg.set_focus()
+    dlg.child_window(title="确定", class_name="Button").click_input()
+
 
 def screenshot(name='屏幕截图'):
     current_time = datetime.now()
