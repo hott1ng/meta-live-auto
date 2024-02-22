@@ -16,6 +16,13 @@ def base_upload(filename):
     dlg.type_keys(filename)
     dlg.type_keys('{ENTER}')
 
+def close_update_window():
+    app = Desktop(backend='win32')
+    dlg = app['yuan-live-test 安装']
+    dlg.set_focus()
+    dlg.child_window(title="运行 yuan-live-test(&R)", class_name="Button").click_input()
+    dlg.child_window(title="完成(&F)", class_name="Button").click_input()
+
 
 def screenshot(name='屏幕截图'):
     current_time = datetime.now()
@@ -26,3 +33,6 @@ def screenshot(name='屏幕截图'):
     pyg.screenshot(f'log/screenshot/{date}/{name + stamptime}.png')
 
     return f'log/screenshot/{date}/{name + stamptime}.png'
+
+if __name__ == '__main__':
+    close_update_window()

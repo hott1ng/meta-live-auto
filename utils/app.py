@@ -8,6 +8,7 @@ import time
 import threading
 from keywords.living_page import LivingPage
 from keywords.home_page import HomePage
+from utils import system
 
 load_dotenv()
 
@@ -80,7 +81,9 @@ def check_quit(driver):
         driver = switch_to(driver, '//*[text()="立即更新"]')
         driver.find_element(By.XPATH, '//*[text()="立即更新"]').click()
         time.sleep(60)
-        driver.close()
+
+        system.close_update_window()
+
         t1 = threading.Thread(target=start_listening)
         t1.start()
         driver = connect_app()

@@ -55,7 +55,8 @@ class Test02:
 
             page = LivingPage(self.driver)
             page.main()
-        except:
+        except Exception as e:
+            print(e)
             system.screenshot()
 
     # def testquit(self):
