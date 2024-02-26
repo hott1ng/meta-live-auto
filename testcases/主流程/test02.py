@@ -70,6 +70,7 @@ class Test02:
         # switch_to(self.driver, '//*[text()="模板中心"]')
 
         # teardown不会触发setup
+        system.close_error_window()
         driver = app.start_app()
         app.setFront()
         page = HomePage(driver)
