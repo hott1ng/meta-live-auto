@@ -1,5 +1,5 @@
 import os
-from base import *
+from keywords.base import BasePage
 import time
 
 
@@ -28,7 +28,8 @@ class LoginPage(BasePage):
         self.phone_number = os.getenv('PHONE')
         self.password = os.getenv('PASSWORD')
 
-    def goto_login_page(self):
+
+    def back_to_login_page(self):
         pass
 
     def login_pwd(self):

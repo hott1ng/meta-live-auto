@@ -1,4 +1,4 @@
-from base import *
+from keywords.base import BasePage
 from utils import app
 
 

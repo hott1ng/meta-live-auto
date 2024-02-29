@@ -24,9 +24,19 @@ class BasePage(object):
         self.ac = ActionChains(self.driver)
 
     def base_find_element(self, path):
+        path_name = path
+        if self.rule_dict:
+            path_name = [k for k, v in self.rule_dict.items() if v == path]
+            if path_name:
+                path_name = path_name[0]
+            else:
+                path_name = path
         if self.base_wait(path):
+            logger.info(f' {path_name} 元素已找到')
             return self.driver.find_element(By.XPATH, path)
         else:
+
+            logger.error(f' {path_name} 元素未找到')
             return None
 
     def base_find_css(self, selector):
@@ -57,7 +67,7 @@ class BasePage(object):
         self.ac.double_click(ele).perform()
 
     def base_wait(self, path):
-        for i in range(20):
+        for i in range(10):
             try:
                 if not self.driver.find_element(By.XPATH, path):
                     time.sleep(1)
@@ -68,14 +78,11 @@ class BasePage(object):
                 time.sleep(1)
         return False
 
-
-
     def base_find_elements(self, path):
         if self.base_wait(path):
             return self.driver.find_elements(By.XPATH, path)
         else:
             return None
-
 
     # def deeply_quit(self):
     #
@@ -86,8 +93,6 @@ class BasePage(object):
     #         self.base_click('//*[text()="结束直播"]', (1, 1))
     #         self.base_click('//*[text()="是"]', (1, 1))
     #     self.base_logout()
-
-
 
 
 if __name__ == '__main__':

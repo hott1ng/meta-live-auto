@@ -1,4 +1,4 @@
-from base import *
+from keywords.base import BasePage
 
 
 class ProjectPage(BasePage):
@@ -15,6 +15,9 @@ class ProjectPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+
+    def back_to_project_page(self):
+        pass
 
     def publish(self):
         self.base_click()

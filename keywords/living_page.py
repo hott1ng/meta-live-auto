@@ -1,4 +1,4 @@
-from base import *
+from keywords.base import BasePage
 import time
 
 
@@ -18,6 +18,8 @@ class LivingPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+    def back_to_living_page(self, livingroom_name):
+        pass
 
     def start_spider(self, platform, url):
         self.base_click(self.spider_platform, (1, 1))

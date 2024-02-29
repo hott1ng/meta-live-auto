@@ -1,6 +1,7 @@
 import random
+from datetime import datetime
 
-from base import *
+from keywords.base import BasePage
 from utils import app, system
 import time
 import os
@@ -49,32 +50,24 @@ class CreateOnlinePage(BasePage):
         '保存': '//*[text()="保存"]',
         '提交': '//*[text()="提交"]',
 
+        # 数字人中心首页
+        'online数字人标签页': '//*[text()="数字人Online "]',
+        '数字人Pro标签页': '//*[text()="数字人Pro "]',
+        '制作online数字人按钮': '//*[text()="制作数字人Online"]',
+        '可替换背景': '//ul/li[text()="可替换背景online"]',
+        '不可替换背景': '//ul/li[text()="不可替换背景online"]',
+
+        # 新建界面
+        '新建主播': '//div[text()="新建主播"]',
+        '使用已有主播': '//div[contains(text(),"已有主播")]',
+        '主播名称输入框': '//*[@placeholder="请输入"]',
+        '同时复刻形象音色勾选框': '//*[contains(text(),"同时使用")]',
+        '选择已有主播下拉框': '//*[@placeholder="请选择主播"]',
+        '根据主播名字选择已有主播': '//li/div/span[text()="{}"]',
+
+
     }
 
-    # sex_button = '//*[text()="{}"]'
-    # scene_input = '//div[@class="el-form-item is-required asterisk-left ex-form-item"]//*[@placeholder="请输入"]'
-    # next_step_button = '//*[text()="下一步"]'
-    #
-    # avatar_button = '//*[text()="封面图"]'
-    #
-    # create_avatar_button = '//*[text()="生成封面图"]'
-    #
-    # confirm_button = '//*[text()="确定"]'
-    #
-    # upload_info = '//*[text()="上传协议"]'
-    #
-    # prefix_checkbox = '//*[text()="认证方法"]'
-    #
-    # photo1_button = '//*[text()="人像面"]'
-    # photo2_button = '//*[text()="国徽面"]'
-    #
-    # checkbox_list = '//label'
-    #
-    # submit_button = '//*[text()="提交"]'
-    #
-    # agree_button = '//footer//label/span/span'
-    #
-    # ok_button = '//*[text()="确定提交"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -136,7 +129,7 @@ class CreateOnlinePage(BasePage):
         self.base_click(self.rule_dict['提交'], (1, 1))
 
         checkbox_list = self.base_find_elements(self.rule_dict['要求多选框'])
-        for i in checkbox_list[:-1]:
+        for i in checkbox_list:
             i.click()
 
         self.base_click(self.rule_dict['隐私协议勾选框'])
@@ -147,6 +140,31 @@ class CreateOnlinePage(BasePage):
         self.step1(scence_name)
         self.step2(self.video1, self.video2)
         self.step3(self.pdf, self.photo1, self.photo2, version=2)
+
+
+    def is_in_human_center_page(self):
+        if self.base_find_element(self.rule_dict['制作online数字人按钮']):
+            return True
+        else:
+            return False
+
+    # 进入online界面
+    def enter_online_tab(self):
+        self.base_click(self.rule_dict['online数字人标签页'], (0, 1))
+
+    def enter_pro_tab(self):
+        pass
+
+    # 制作online数字人,已位于online数字人界面
+    def make_online_human(self, make_mode, human_type, human_name):
+        self.base_click(self.rule_dict['制作online数字人按钮'], (0, 2))
+        self.base_click(self.rule_dict[make_mode], (0, 1))
+        self.base_click(self.rule_dict[human_type], (0, 1))
+        self.base_input(self.rule_dict['主播名称输入框'], human_name)
+        self.base_click(self.rule_dict['同时复刻形象音色勾选框'], (0, 1))
+        self.base_click(self.rule_dict['确定'], (0, 1))
+
+
 
     def main(self):
         scence_name = 'online数字人主流程场景'
@@ -162,4 +180,4 @@ if __name__ == '__main__':
     driver = webdriver.Chrome(options=options)
     time.sleep(2)
     aa = CreateOnlinePage(driver)
-    aa.run('123')
+    aa.main()
