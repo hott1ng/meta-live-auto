@@ -1,0 +1,20 @@
+import pytest
+from utils import system
+from datetime import datetime
+
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call, video_flag=False):
+    current_time = datetime.now()
+
+    # 获取钩子方法的调用结果
+    out = yield
+    testcases_name = item.function.__doc__
+    # 3. 从钩子方法的调用结果中获取测试报告
+    report = out.get_result()
+    if report.when == 'call':
+        if report.outcome != 'passed':
+            system.screenshot(current_time, testcases_name)
+
+    if video_flag:
+        system.get_front_30video(current_time)

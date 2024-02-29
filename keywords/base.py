@@ -15,7 +15,6 @@ class BasePage(object):
     每个页面都能使用的方法
     '''
 
-
     user_info_button = '//div[@class="right-part"]//div[@class="user-avatar"]/following-sibling::div[@class="user-name"]'
     dropdown_button = '//div[@class="dropdown-btn-item"]'
 
@@ -29,6 +28,9 @@ class BasePage(object):
             return self.driver.find_element(By.XPATH, path)
         else:
             return None
+
+    def base_find_css(self, selector):
+        return self.driver.find_element(By.CSS_SELECTOR, selector)
 
     # 单击
     def base_click(self, path, args=(0, 0)):
@@ -68,7 +70,11 @@ class BasePage(object):
 
 
 
-
+    def base_find_elements(self, path):
+        if self.base_wait(path):
+            return self.driver.find_elements(By.XPATH, path)
+        else:
+            return None
 
 
     # def deeply_quit(self):
