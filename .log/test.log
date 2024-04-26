@@ -1,0 +1,35 @@
+2024-03-01 14:08:56.286 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="密码登录"] 元素已找到
+2024-03-01 14:08:58.321 | INFO     | keywords.base_page:base_find_element:36 -  //*[@aria-hidden="false"]//input[@placeholder="请输入手机号"] 元素已找到
+2024-03-01 14:08:58.367 | INFO     | keywords.base_page:base_find_element:36 -  //*[@aria-hidden="false"]//input[@placeholder="请输入密码"] 元素已找到
+2024-03-01 14:08:58.428 | INFO     | keywords.base_page:base_find_element:36 -  //*[@class="el-checkbox__inner"] 元素已找到
+2024-03-01 14:09:00.470 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="登录"] 元素已找到
+2024-03-01 14:09:22.286 | INFO     | keywords.base_page:base_find_element:36 -  //div[@class="title" and text()="元悠9"] 元素已找到
+2024-03-01 14:09:24.348 | INFO     | keywords.other_page:step1:202 - 元悠9选择成功
+2024-03-01 14:09:25.360 | INFO     | keywords.base_page:base_find_element:36 -  //div[text()="第二步：添加产品"] 元素已找到
+2024-03-01 14:09:30.579 | INFO     | keywords.base_page:base_find_element:36 -  //button/span[text()=" 产品"] 元素已找到
+2024-03-01 14:09:31.621 | INFO     | keywords.base_page:base_find_element:36 -  //div[text()="双击输入话术"] 元素已找到
+2024-03-01 14:09:31.909 | INFO     | keywords.base_page:base_find_element:36 -  //textarea 元素已找到
+2024-03-01 14:09:32.980 | INFO     | keywords.base_page:base_find_element:36 -  //div[@class="edit-box"]//button[@class="el-button el-button--primary"] 元素已找到
+2024-03-01 14:09:34.017 | INFO     | keywords.other_page:step2_add_product:210 - 添加产品成功
+2024-03-01 14:09:35.027 | INFO     | keywords.base_page:base_find_element:36 -  //div[text()="第三步：设置直播流程"] 元素已找到
+2024-03-01 14:09:40.121 | INFO     | keywords.base_page:base_find_element:36 -  //div[@class="project-title"] 元素已找到
+2024-03-01 14:09:41.146 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="保存并发布"] 元素已找到
+2024-03-01 14:09:47.189 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="继续"] 元素已找到
+2024-03-01 14:09:51.226 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="是"] 元素已找到
+2024-03-01 14:09:54.257 | INFO     | keywords.other_page:publish:232 - 发布成功
+2024-03-01 14:09:54.268 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="刷新"] 元素已找到
+2024-03-01 14:10:08.390 | ERROR    | keywords.base_page:base_find_element:40 -  //*[text()="新直播2024030101"]/ancestor::tr/td//div[text()=" 待开播"] 元素未找到
+2024-03-01 14:10:08.398 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="刷新"] 元素已找到
+2024-03-01 14:10:12.447 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="新直播2024030101"]/ancestor::tr/td//div[text()=" 待开播"] 元素已找到
+2024-03-01 14:10:12.476 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="新直播2024030101"]/ancestor::tr//span[text()="开播"] 元素已找到
+2024-03-01 14:10:14.558 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="开始直播"] 元素已找到
+2024-03-01 14:10:22.702 | INFO     | keywords.base_page:base_find_element:36 -  //div[@class="panel-header"]//span[text()="直播平台"] 元素已找到
+2024-03-01 14:10:24.970 | INFO     | keywords.base_page:base_find_element:36 -  //ul/li/span[contains(text(),"抖音")] 元素已找到
+2024-03-01 14:10:26.119 | INFO     | keywords.base_page:base_find_element:36 -  //input[@placeholder="请输入"] 元素已找到
+2024-03-01 14:10:27.966 | INFO     | keywords.base_page:base_find_element:36 -  //span[text()="开启"] 元素已找到
+2024-03-01 14:10:30.372 | INFO     | keywords.base_page:base_find_element:36 -  //div[text()="智能互动"]/following-sibling::div/span 元素已找到
+2024-03-01 14:10:32.549 | INFO     | keywords.base_page:base_find_element:36 -  //div[text()="智能互动"] 元素已找到
+2024-03-01 14:10:33.692 | INFO     | keywords.other_page:start_spider:356 - 开启爬虫成功
+2024-03-01 14:10:41.961 | INFO     | keywords.other_page:mon_answer:364 - 爬虫正常使用
+2024-03-01 14:10:43.007 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="结束直播"] 元素已找到
+2024-03-01 14:10:45.231 | INFO     | keywords.base_page:base_find_element:36 -  //*[text()="是"] 元素已找到

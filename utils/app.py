@@ -112,5 +112,23 @@ def check_quit(driver):
     return driver
 
 
+# def check_page(driver: webdriver, url):
+#     if driver.current_url ==
+
+
+class PageLink:
+    '''
+    当前位于的url
+    一致  继续测试
+    不一致  切换到对应页面
+
+    '''
+    def __init__(self, url, front_page=None, next_page=None):
+        self.url = url
+        self.front_page = front_page
+        self.next_page = next_page
+        pass
+
+
 if __name__ == '__main__':
     start_listening()

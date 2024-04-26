@@ -6,4 +6,4 @@ from utils import app
 driver = app.start_app()
 app.setFront()
 
-HumanCenterPage(driver).main()
+CreateOnlinePage(driver).main()

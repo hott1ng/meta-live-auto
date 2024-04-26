@@ -1,7 +1,6 @@
-import random
 from datetime import datetime
-
-from keywords.base import BasePage
+import random
+from keywords.base_page import BasePage
 from utils import app, system
 import time
 import os
@@ -65,9 +64,7 @@ class CreateOnlinePage(BasePage):
         '选择已有主播下拉框': '//*[@placeholder="请选择主播"]',
         '根据主播名字选择已有主播': '//li/div/span[text()="{}"]',
 
-
     }
-
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -83,16 +80,15 @@ class CreateOnlinePage(BasePage):
         self.base_input(self.rule_dict['场景名称输入框'], scene_name)
         self.base_click(self.rule_dict['下一步'], (0, 1))
 
-    def step2(self, path1, path2):
-        uploadbutton = self.driver.find_elements(By.XPATH, '//*[text()="点击上传"]')
-
-        uploadbutton[0].click()
-        time.sleep(3)
+    def step2(self, path1, path2, make_mode):
+        self.base_click(self.rule_dict['上传训练视频'], (0, 1))
         system.base_upload(path1)
-
-        uploadbutton[1].click()
         time.sleep(3)
-        system.base_upload(path2)
+
+        if make_mode == '可替换背景':
+            self.base_click(self.rule_dict['上传透明通道视频'], (0, 1))
+            system.base_upload(path2)
+            time.sleep(3)
 
         self.base_click(self.rule_dict['上传头像'], (15, 1))
         self.base_click(self.rule_dict['生成封面图'], (1, 10))
@@ -141,7 +137,6 @@ class CreateOnlinePage(BasePage):
         self.step2(self.video1, self.video2)
         self.step3(self.pdf, self.photo1, self.photo2, version=2)
 
-
     def is_in_human_center_page(self):
         if self.base_find_element(self.rule_dict['制作online数字人按钮']):
             return True
@@ -164,12 +159,17 @@ class CreateOnlinePage(BasePage):
         self.base_click(self.rule_dict['同时复刻形象音色勾选框'], (0, 1))
         self.base_click(self.rule_dict['确定'], (0, 1))
 
-
-
     def main(self):
-        scence_name = 'online数字人主流程场景'
+        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+        hunman_name = 'online数字人主流程数字人' + timestamp
+        self.enter_online_tab()
+
+        make_mode = random.choice(['可替换背景', '不可替换背景'])
+        human_type = random.choice(['新建主播', '使用已有主播'])
+        self.make_online_human(make_mode, human_type, hunman_name)
+        scence_name = 'online数字人主流程场景' + timestamp
         self.step1(scence_name)
-        self.step2(self.video1, self.video2)
+        self.step2(self.video1, self.video2, make_mode)
         self.step3(self.pdf, self.photo1, self.photo2, version=2)
 
 

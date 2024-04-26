@@ -1,6 +1,7 @@
 import pytest
-from utils import system,app
+from utils import system,app,send_msg
 from datetime import datetime
+from loguru import logger
 
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
@@ -15,7 +16,8 @@ def pytest_runtest_makereport(item, call, video_flag=False):
     # print(testcases_name)
     if report.when == 'call':
         if report.outcome != 'passed':
-            system.screenshot(current_time)
+            path = system.screenshot(current_time)
+            send_msg.send_warning(path)
 
     if video_flag:
         system.get_front_30video(current_time)
@@ -25,3 +27,5 @@ def pytest_runtest_makereport(item, call, video_flag=False):
 @pytest.fixture(scope='function', autouse=False)
 def connect_client():
     app.connect_app()
+
+logger.add('./log/test.log')
